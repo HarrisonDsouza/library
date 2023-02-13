@@ -10,10 +10,54 @@
 <body>
   <section id="header">
     <div class="title">Library</div>
-    <button class="addBookBtn">+ Add</button>
+    <button class="addBookBtn">+ Add Books</button>
   </section>
   <section id="main">
-    <div class="bookList"></div>
+    <div class="bookList">
+      <template>
+      <div class="book">
+          <p class="bookName">Harry Potter</p>
+          <p class="author">~By <span>JK Rowling</span></p>
+          <p class="pages"><span>1000</span> pages</p>
+          <div class="status">
+            <input type="radio" id="read" name="readingStatus" value="read />
+            <label for="read">Read</label>
+            <input type="radio" id="not-read" name="readingStatus" value="not-read />
+            <label for="not-read>Not Read</label>
+          </div>
+          <button class="btn-rem">Remove</button>
+      </div>
+    </template>
+    </div>
+    <div class="message"><p>You do not have any books in your library</p></div>
+    <div class="modalBg">
+      <div class="addBookModal">
+        <form action="#" class="addBookForm">
+          <label for="bookNameInp">Name of Book</label>
+          <input class="bookNameInp" id="bookNameInp" name="book-name" type="text">
+          
+          <label for="authorNameInp">Author</label>
+          <input type="text" id="authorNameInp name="author-name" class="authorNameInp">
+          
+          <label for="pagesInp">Pages</label>
+          <input class="pagesInp" id="pagesInp" name="pages" type="number">
+          
+          <div class="readingStatusInp">
+            <p>Have you read the book?</p>
+            <input type="radio" id="read" name="readingStatus" value="read />
+            <label for="read">Read</label>
+
+            <input type="radio" id="not-read" name="readingStatus" value="not-read />
+            <label for="not-read>Not Read</label>
+          </div>
+          <div class="actionBtn">
+            <button class="cancel" type="submit" value="cancel">Cancel</button>
+            <button class="submit" type="submit" value="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </section>
+  <script src="script.js"></script>
 </body>
 </html>

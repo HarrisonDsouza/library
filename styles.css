@@ -5,16 +5,17 @@
 }
 
 body {
-  
   width: 100vw;
   min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /* header */
 
 #header{
   position: sticky;
-  width: 100%;
+  width: 100;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 5px gray;
@@ -35,19 +36,115 @@ body {
   border-radius: 25px;
   box-shadow: 2px 2px 2px gray;
   position: absolute;
-  right: 30px;
+  right: 50px;
   top: 4rem;  
+  cursor: pointer;
 }
+
+/* Add book modal */
+#main .modalBg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#main .modalBg.show{
+  visibility: visible;
+}
+
+#main .modalBg .addBookModal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 1.5rem;
+  width: clamp(200px, 50vw, 24rem);
+  background: white;
+}
+
+#main .modalBg .addBookModal .addBookForm{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#main .modalBg .addBookModal .addBookForm label,
+#main .modalBg .addBookModal .addBookForm .readingStatusInp{
+  margin-top: 20px;
+}
+
+#main .modalBg .addBookModal .addBookForm .actionBtn{
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 30px;
+  width: 100%;
+}
+
+#main .modalBg .addBookModal .addBookForm button{
+  padding: 10px;
+
+}
+
 
 /* content */
 #main{
   border: 2px solid red;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+#main .message{
+  text-align: center;
+  margin-top: 50px;
 }
 
 #main .bookList{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  height: 50px;
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: space-between;
+  gap: 40px;
   margin-top: 30px;
   min-height: 100%;
+}
+
+/* books card */
+#main .bookList .book{
+  border: 1px solid red;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#main .bookList .book .bookName{
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+#main .bookList .book .author{
+  text-align: right;
+  padding-right: 20px;
+}
+
+#main .bookList .book .pages{
+  text-align: center;
+  margin-top: 20px ;
+}
+
+#main .bookList .book .status{
+  text-align: center;
+  margin-top: 10px;
+}
+
+#main .bookList .book .status input{
+  margin-right: 3px ;
+  margin-left: 10px;
+}
+#main .bookList .book .btn-rem{
+  margin-top: 10px;
+  height: 30px;
 }
