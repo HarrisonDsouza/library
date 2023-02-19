@@ -6,23 +6,73 @@ const bookList = document.querySelector("#main .bookList");
 // Add book modal
 const addBookBtn = document.querySelector("#header .addBookBtn");
 const modal = document.querySelector("#main .modalBg");
+const form = document.querySelector("#main .modalBg .addBookForm");
 const cancelBtn = document.querySelector("#main .modalBg .actionBtn .cancel");
 const submitBtn = document.querySelector("#main .modalBg .actionBtn .submit");
 
 
-addBookBtn.addEventListener("click", toggleModal);
+addBookBtn.addEventListener("click", ()=>{
+  form.reset();
+  toggleModal()
+});
+
 cancelBtn.addEventListener("click", (e) =>{
   e.preventDefault();
   toggleModal();
+  const errorMessages = document.querySelectorAll("#main .modalBg .addBookForm input+p");
+  for(let message of errorMessages){
+    message.classList.remove("invalid");
+  }
+  
 });
+
 submitBtn.addEventListener("click", (e)=>{
   e.preventDefault();
-  addBook();
-  toggleModal();
+  formValidate();
+  
 });
+
+document.addEventListener("keypress", (e)=>{
+  if(modal.classList.contains("show") && e.key === "Enter"){
+    e.preventDefault();
+    formValidate();
+  
+
+  }
+})
+
+
 
 function toggleModal(){
   modal.classList.toggle("show");
+}
+
+function formValidate(){
+  const bookNameInp = document.querySelector("#main .modalBg .addBookForm .bookNameInp");
+  const authorNameInp = document.querySelector("#main .modalBg .addBookForm .authorNameInp")
+  const pagesInp = document.querySelector("#main .modalBg .addBookForm .pagesInp")
+  
+  if(!bookNameInp.checkValidity()){
+    bookNameInp.parentElement.querySelector(".bookNameInp+p").classList.add("invalid");
+    // bookNameInp.classList.add("invalid")
+  } else if(!authorNameInp.checkValidity()){
+    authorNameInp.parentElement.querySelector(".authorNameInp+p").classList.add("invalid");
+    // authorNameInp.classList.add("invalid");
+  } else if(!pagesInp.checkValidity()){
+    pagesInp.parentElement.querySelector(".pagesInp+p").classList.add("invalid");
+    // pagesInp.classList.add("invalid");
+
+  } else{
+      const errorMessages = document.querySelectorAll("#main .modalBg .addBookForm>input+p");
+      addBook();
+      toggleModal();
+      for(let message of errorMessages){
+        if(message.classList.contains("invalid"))
+         message.classList.remove("invalid");
+      }
+
+    }
+
 }
 
 
@@ -45,6 +95,7 @@ function addBook(){
   const newBook = new Book(bookName, authorName, pages, readingStatus);
   library.push(newBook);
   refreshLibraryContent();
+  
 }
 
 
@@ -53,6 +104,14 @@ function refreshLibraryContent(){
   bookList.innerHTML = '';
   for(book of library){
   book.createCard();
+  }
+  const message = document.querySelector("#main .message")
+  if(library.length > 0){
+    if(!message.classList.contains("hide"))
+      message.classList.add("hide");
+  }else{
+    if(message.classList.contains("hide"))
+      message.classList.remove("hide");
   }
 }
 

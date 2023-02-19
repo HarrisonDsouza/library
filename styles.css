@@ -1,7 +1,19 @@
+:root{
+  --primary-color:#19171a;
+  --primary2-color:#181a1e;
+  --secondary-color:#24252a;
+  --secondary2-color:#e03e10;
+  --white-color:#ffffff
+}
+
 *{
+  color: var(--white-color);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* font-family: 'Bebas Neue', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto Mono', monospace; */
 }
 
 body {
@@ -14,31 +26,39 @@ body {
 /* header */
 
 #header{
+  background-color: var(--primary-color);
   position: sticky;
-  width: 100;
+  width: 100vw;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 5px gray;
+  box-shadow: 0 1px 10px black;
 
 }
 
 #header .title{
-  margin: 0 auto;
-  font-size: 2.5rem;  
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  color: var(--white-color);
+  margin: 0 auto; 
   display: inline-block;
 }
 
 #header .addBookBtn{
-  background-color: aqua;
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: var(--secondary2-color);
   font-size: 1.2rem;
   padding: 8px 10px;
   border: none;
   border-radius: 25px;
-  box-shadow: 2px 2px 2px gray;
+  box-shadow: 2px 2px 2px var(--primary-color);
   position: absolute;
   right: 50px;
-  top: 4rem;  
+  top: 75px;  
   cursor: pointer;
+  
+} 
+#header .addBookBtn:active{
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Add book modal */
@@ -57,13 +77,13 @@ body {
 }
 
 #main .modalBg .addBookModal{
+  background-color: var(--primary-color);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1rem 1.5rem;
-  width: clamp(200px, 50vw, 24rem);
-  background: white;
+  width: clamp(200px, 60vw, 24rem);
 }
 
 #main .modalBg .addBookModal .addBookForm{
@@ -73,18 +93,53 @@ body {
 
 #main .modalBg .addBookModal .addBookForm label,
 #main .modalBg .addBookModal .addBookForm .readingStatusInp{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 300;
   margin-top: 20px;
 }
+
+#main .modalBg .addBookModal .addBookForm > input{
+  background-color: var(--secondary-color);
+  border: 1px solid black;
+  box-shadow: 2px -2px 5px var(--primary-color) inset;
+  outline: none;
+  padding: 5px 2px;
+}
+
+#main .modalBg .addBookModal .addBookForm > input:focus{
+  border: 2px solid --white-color;
+}
+
+#main .modalBg .addBookModal .addBookForm > input.invalid{
+  border: 2px solid red;
+}
+
+#main .modalBg .addBookModal .addBookForm > input+p{
+  visibility:hidden;
+  color: var(--secondary2-color);
+}
+
+#main .modalBg .addBookModal .addBookForm > input+p.invalid{
+  visibility: visible;
+}
+
+
 
 #main .modalBg .addBookModal .addBookForm .actionBtn{
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap:5vw;
   margin-top: 30px;
   width: 100%;
 }
 
+#main .addBookForm .readingStatusInp input:nth-of-type(2){
+  margin-left:1rem;
+}
+
+
 #main .modalBg .addBookModal .addBookForm button{
+  background-color: var(--secondary2-color);
   padding: 10px;
 
 }
@@ -92,14 +147,20 @@ body {
 
 /* content */
 #main{
-  border: 2px solid red;
+  background-color: var(--primary2-color);
   padding: 20px;
   flex-grow: 1;
 }
 
 #main .message{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: var(--white-color);
   text-align: center;
   margin-top: 50px;
+}
+
+#main .message.hide{
+  visibility: hidden;
 }
 
 #main .bookList{
@@ -114,31 +175,44 @@ body {
 
 /* books card */
 #main .bookList .book{
-  border: 1px solid red;
+  background-color: var(--secondary-color);
   padding: 20px;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+
 }
 
 #main .bookList .book .bookName{
+  font-family: 'Bebas Neue', cursive;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
 #main .bookList .book .author{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.2rem;
+  font-style: italic;
   text-align: right;
   padding-right: 20px;
 }
 
 #main .bookList .book .pages{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.15;
   text-align: center;
   margin-top: 20px ;
 }
 
 #main .bookList .book .status{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.1rem;
   text-align: center;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap:5vw;
 }
 
 #main .bookList .book .status input{
@@ -146,6 +220,26 @@ body {
   margin-left: 10px;
 }
 #main .bookList .book .btn-rem{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
   margin-top: 10px;
-  height: 30px;
+  padding: 5px 0px;
+  background-color: var(--secondary2-color);
+  border-radius: 20px;
+
+}
+
+
+@media (max-width:500px){
+  #header .title{
+    display: block;
+    text-align: left;
+    margin-left: 20px ;
+  }
+}
+
+@media (max-width:360px){
+  #header .addBookBtn{
+    right: 10px;
+  }
 }

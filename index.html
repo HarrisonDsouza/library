@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&family=Roboto+Condensed:wght@300;400&family=Roboto+Mono:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
   <title>Library</title>
 </head>
 <body>
@@ -25,14 +28,17 @@
       <div class="addBookModal">
         <form action="#" class="addBookForm">
           <label for="bookNameInp">Name of Book</label>
-          <input class="bookNameInp" id="bookNameInp" name="book-name" type="text">
-          
+          <input class="bookNameInp" id="bookNameInp" name="book-name" type="text" required>
+          <p>Enter valid input</p>
+
           <label for="authorNameInp">Author</label>
-          <input type="text" id="authorNameInp" name="author-name" class="authorNameInp">
+          <input type="text" id="authorNameInp" name="author-name" class="authorNameInp" required>
+          <p>Enter valid input</p>
           
           <label for="pagesInp">Pages</label>
-          <input class="pagesInp" id="pagesInp" name="pages" type="number">
-          
+          <input class="pagesInp" id="pagesInp" name="pages" type="number" required>
+          <p>Enter valid input!</p>
+
           <div class="readingStatusInp">
             <p>Have you read the book?</p>
             <input type="radio" id="read" name="readingStatus" value="read"/>
@@ -42,7 +48,7 @@
             <label for="not-read">Not-Read</label>
           </div>
           <div class="actionBtn">
-            <button class="cancel" type="submit" value="cancel">Cancel</button>
+            <button class="cancel" type="reset" value="cancel">Cancel</button>
             <button class="submit" type="submit" value="submit">Submit</button>
           </div>
         </form>
